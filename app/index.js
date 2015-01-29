@@ -10,12 +10,6 @@ module.exports = yeoman.generators.Base.extend({
   constructor: function () {
     yeoman.generators.Base.apply(this, arguments);
 
-    this.option('test-framework', {
-      desc: 'Test framework to be invoked',
-      type: String,
-      defaults: 'mocha'
-    });
-
     this.option('skip-welcome-message', {
       desc: 'Skips the welcome message',
       type: Boolean
@@ -40,7 +34,7 @@ module.exports = yeoman.generators.Base.extend({
     var done = this.async();
 
     if (!this.options['skip-welcome-message']) {
-      this.log(yosay('\'Allo \'allo! Out of the box I include HTML5 Boilerplate, jQuery, and a gulpfile.js to build your app.'));
+      this.log(yosay('\'Allo \'allo! Out of the box I include HTML5 Boilerplate, Angular, SASS, and a gulpfile.js. From COBE with <3'));
     }
 
     var prompts = [{
@@ -106,6 +100,8 @@ module.exports = yeoman.generators.Base.extend({
 
       bower.dependencies.angular = "~1.3.4";
       bower.dependencies["angular-ui-router"] = "~0.2.13";
+      bower.dependencies["angular-mocks"] = "~1.3.11";
+
       this.copy('bowerrc', '.bowerrc');
       this.write('bower.json', JSON.stringify(bower, null, 2));
     },
@@ -148,8 +144,8 @@ module.exports = yeoman.generators.Base.extend({
       this.homeSpec = this.src.read('main.controller.spec.js');
       this.homeSpec = this.engine(this.homeSpec, this);
 
-      this.cityDir = this.src.read('city.directive.js');
-      this.cityDir = this.engine(this.cityDir, this);
+      this.techsDir = this.src.read('techs.directive.js');
+      this.techsDir = this.engine(this.cityDir, this);
     },
 
     app: function () {
@@ -167,11 +163,13 @@ module.exports = yeoman.generators.Base.extend({
       this.mkdir('app/img');
       this.mkdir('app/fonts');
       this.mkdir('app/svg');
+      this.copy('karma.conf.js','karma.conf.js');
       this.copy('index.html','app/index.html');
+      this.copy('home.html','app/js/main/views/home.html');
       this.copy('app.js', 'app/js/app.js');
       this.copy('main.controller.js', 'app/js/main/controllers/MainController.js');
       this.copy('main.controller.spec.js', 'app/js/main/controllers/MainController.spec.js');
-      this.copy('city.directive.js', 'app/js/main/directives/CityDirective.js');
+      this.copy('techs.directive.js', 'app/js/main/directives/TechDirective.js');
 
   },
 

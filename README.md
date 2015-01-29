@@ -1,20 +1,24 @@
-# Web app generator [![Build Status](https://secure.travis-ci.org/yeoman/generator-gulp-webapp.svg?branch=master)](http://travis-ci.org/yeoman/generator-gulp-webapp)
+# Cobe angular generator
 
-> [Yeoman](http://yeoman.io) generator that scaffolds out a front-end web app using [gulp](http://gulpjs.com/) for the build process
+[Yeoman](http://yeoman.io) generator that scaffolds out a [Angular](https://angularjs.org/) application using [gulp](http://gulpjs.com/) for the build process.
+This generator is build on top of the [gulp-webapp](https://github.com/yeoman/generator-gulp-webapp) generator.
 
-![](screenshot.png)
+![](screenshoot.png)
 
 
 ## Features
 
-Please see our [gulpfile.js](app/templates/gulpfile.js) for up to date information on what we support.
+Please see [gulpfile.js](app/templates/gulpfile.js) for up to date information on what we support.
 
 * CSS Autoprefixing
 * Built-in preview server with BrowserSync
 * Automagically compile Sass with [libsass](http://libsass.org)
 * Automagically lint your scripts
-* Awesome image optimization
+* Automagically minify your scripts
+* Automagically generate angular templates
 * Automagically wire-up dependencies installed with [Bower](http://bower.io)
+* Awesome image optimization
+* Easy unit testing with Karma and Jasmine
 
 *For more information on what this generator can do for you, take a look at the [gulp plugins](app/templates/_package.json) used in our `package.json`.*
 
@@ -29,34 +33,14 @@ If your favorite feature is missing and you really need Ruby Sass, you can alway
 ## Getting Started
 
 - Install dependencies: `npm install --global yo bower`
-- Install the generator: `npm install --global generator-gulp-webapp`
-- Run `yo gulp-webapp` to scaffold your webapp
+- Install the generator: `npm install --global generator-cobe-angular`
+- Run `yo cobe-angular` to scaffold your Angular app
 - Run `gulp serve` to preview and watch for changes
+- Run `gulp test` to run your unit tests
 - Run `bower install --save <package>` to install frontend dependencies
 - Run `gulp` to build your webapp for production
 
 
-## Docs
-
-* [getting started](docs/README.md) with this generator
-* [recipes](docs/recipes/README.md) for integrating other popular technologies like CoffeeScript
-* [details](docs/bower.md) about our Bower setup
-
-
-## Options
-
-- `--skip-install`
-  Skips the automatic execution of `bower` and `npm` after scaffolding has finished.
-
-- `--test-framework=<framework>`
-  Defaults to `mocha`. Can be switched for another supported testing framework like `jasmine`.
-
-
-## Contribute
-
-See the [contributing docs](contributing.md).
-
-
 ## License
 
-[BSD license](http://opensource.org/licenses/bsd-license.php)
+[MIT license](http://opensource.org/licenses/MIT)
