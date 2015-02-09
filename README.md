@@ -1,7 +1,8 @@
 # Cobe angular generator
 
-[Yeoman](http://yeoman.io) generator that scaffolds out a [Angular](https://angularjs.org/) application using [gulp](http://gulpjs.com/) for the build process.
-This generator is build on top of the [gulp-webapp](https://github.com/yeoman/generator-gulp-webapp) generator.
+[Yeoman](http://yeoman.io) generator that scaffolds out a [Angular](https://angularjs.org/) application using [gulp](http://gulpjs.com/) for the build process. This generator is build on top of the [gulp-webapp](https://github.com/yeoman/generator-gulp-webapp) generator.
+
+Build by people from [COBE](http://cobeisfresh.com/) with <3
 
 ![](screenshoot.png)
 
@@ -11,6 +12,7 @@ This generator is build on top of the [gulp-webapp](https://github.com/yeoman/ge
 Please see [gulpfile.js](app/templates/gulpfile.js) for up to date information on what we support.
 
 * CSS Autoprefixing
+* Pre commit hook that runs jshint and tests
 * Built-in preview server with BrowserSync
 * Automagically compile Sass with [libsass](http://libsass.org)
 * Automagically lint your scripts

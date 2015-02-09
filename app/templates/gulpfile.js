@@ -167,3 +167,12 @@ gulp.task("test", ["scripts"], function () {
  gulp.task("default", ["clean"], function () {
    gulp.start("build");
  });
+
+ gulp.task('lint', function () {
+    return gulp.src('app/scripts/main.js')
+        .pipe($.jshint())
+        .pipe($.jshint.reporter('jshint-stylish'))
+        .pipe($.jshint.reporter('fail'));
+});
+
+gulp.task('validate', ['lint', 'test']);

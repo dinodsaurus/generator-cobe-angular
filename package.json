@@ -1,9 +1,9 @@
 {
   "name": "generator-cobe-angular",
-  "version": "0.5.0",
-  "description": "Scaffold out a Angular web app",
+  "version": "0.6.0",
+  "description": "Scaffold out a Angular web app the COBE way",
   "license": "MIT",
-  "repository": "dinodsaurus/generator-gulp-webapp",
+  "repository": "dinodsaurus/generator-cobe-angular",
   "author": "Dino Trojak",
   "main": "app/index.js",
   "engines": {
