@@ -23,8 +23,6 @@ gulp.task("styles", function () {<% if (includeSass) { %>
 
 gulp.task("scripts", function () {
   return gulp.src("app/js/**/*.js")
-  //.pipe($.jshint())
-  //.pipe($.jshint.reporter("jshint-stylish"))
   .pipe($.size());
 });
 
@@ -42,7 +40,7 @@ gulp.task("html", ["styles", "partials"], function () {
   return gulp.src("app/*.html")
     .pipe(assets)
     .pipe(jsFilter)
-    .pipe($.ngmin())
+    .pipe($.ngAnnotate())
     .pipe($.uglify())
     .pipe(jsFilter.restore())
     .pipe(cssFilter)
