@@ -41,7 +41,7 @@ If your favorite feature is missing and you really need Ruby Sass, you can alway
 - Run `gulp test` to run your unit tests
 - Run `bower install --save <package>` to install frontend dependencies
 - Run `gulp` to build your webapp for production
-### You need to manually install `npm install precommit-hook` after git is initialized 
+### You need to manually install `npm install precommit-hook` after git is initialized.
 
 ## License
 
