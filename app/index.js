@@ -158,11 +158,9 @@ module.exports = yeoman.generators.Base.extend({
       this.mkdir('app/js/main/services');
       this.mkdir('app/js/main/directives');
       this.mkdir('app/js/main/views');
-      this.mkdir('app/vendor/');
       this.mkdir('app/styles');
       this.mkdir('app/img');
       this.mkdir('app/fonts');
-      this.mkdir('app/svg');
       this.copy('karma.conf.js','karma.conf.js');
       this.copy('index.html','app/index.html');
       this.copy('home.html','app/js/main/views/home.html');
