@@ -15,5 +15,13 @@
   "undef": true,
   "unused": true,
   "strict": true,
-  "jquery": true
+  "jquery": true,
+  "globals"       : {
+    "angular": true,
+    "describe": true,
+    "beforeEach": true,
+    "inject": true,
+    "it": true,
+    "expect": true
+  }
 }
