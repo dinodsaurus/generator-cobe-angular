@@ -124,6 +124,20 @@ gulp.task("wiredep", function () {
     .pipe(gulp.dest("app"));
 });
 
+ gulp.task("build", ["validate", "html", "images", "fonts", "extras"], function () {
+   return gulp.src("dist/**/*").pipe($.size({title: "build", gzip: true}));
+ });
+
+ gulp.task("default", ["clean"], function () {
+   gulp.start("build");
+ });
+ gulp.task("lint", function () {
+    return gulp.src("app/scripts/main.js")
+        .pipe($.jshint())
+        .pipe($.jshint.reporter("jshint-stylish"))
+        .pipe($.jshint.reporter("fail"));
+});
+
 gulp.task("test", ["scripts"], function () {
   var wiredep = require("wiredep");
   var bowerDeps = wiredep({
@@ -149,20 +163,13 @@ gulp.task("test", ["scripts"], function () {
     });
  });
 
-
- gulp.task("build", ["validate", "html", "images", "fonts", "extras"], function () {
-   return gulp.src("dist/**/*").pipe($.size({title: "build", gzip: true}));
- });
-
- gulp.task("default", ["clean"], function () {
-   gulp.start("build");
- });
-
- gulp.task('lint', function () {
-    return gulp.src('app/scripts/main.js')
-        .pipe($.jshint())
-        .pipe($.jshint.reporter('jshint-stylish'))
-        .pipe($.jshint.reporter('fail'));
+gulp.task("e2e", function () {
+  gulp.src(["./e2e/*.e2e.js"])
+      .pipe($.protractor.protractor({
+          configFile: "./e2e/e2e.conf.js",
+          args: ["--baseUrl", "http://localhost:9000"]
+      }))
+      .on("error", function(e) { throw e; });
 });
 
-gulp.task('validate', ['lint', 'test']);
+gulp.task("validate", ["lint", "test"]);

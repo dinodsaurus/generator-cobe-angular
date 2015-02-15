@@ -145,11 +145,15 @@ module.exports = yeoman.generators.Base.extend({
       this.homeSpec = this.engine(this.homeSpec, this);
 
       this.techsDir = this.src.read('techs.directive.js');
-      this.techsDir = this.engine(this.cityDir, this);
+      this.techsDir = this.engine(this.techsDir, this);
+
+      this.e2e = this.src.read('test.e2e.js');
+      this.e2e = this.engine(this.e2e, this);
     },
 
     app: function () {
       this.mkdir('app');
+      this.mkdir('e2e');
       this.mkdir('app/js');
       this.mkdir('app/js/main');
       this.mkdir('app/js/main/controllers');
@@ -162,6 +166,8 @@ module.exports = yeoman.generators.Base.extend({
       this.mkdir('app/img');
       this.mkdir('app/fonts');
       this.copy('karma.conf.js','karma.conf.js');
+      this.copy('e2e.conf.js','e2e/e2e.conf.js');
+      this.copy('test.e2e.js','e2e/test.e2e.js');
       this.copy('index.html','app/index.html');
       this.copy('home.html','app/js/main/views/home.html');
       this.copy('app.js', 'app/js/app.js');
