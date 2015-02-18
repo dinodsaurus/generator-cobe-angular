@@ -58,13 +58,12 @@ gulp.task("images", function () {
       progressive: true,
       interlaced: true
     })))
-    .pipe(gulp.dest("dist/images"));
+    .pipe(gulp.dest("dist/img"));
 });
 
 gulp.task("fonts", function () {
   return gulp.src(require("main-bower-files")().concat("app/fonts/**/*"))
-    .pipe($.filter("**/*.{eot,svg,ttf,woff}"))
-    .pipe($.flatten())
+    .pipe($.filter("**/*.{eot,svg,ttf,woff,otf}"))
     .pipe(gulp.dest(".tmp/fonts"))
     .pipe(gulp.dest("dist/fonts"));
 });

@@ -1,6 +1,6 @@
 {
   "name": "generator-cobe-angular",
-  "version": "0.6.8",
+  "version": "0.6.9",
   "description": "Scaffold out a Angular web app the COBE way",
   "license": "MIT",
   "repository": "dinodsaurus/generator-cobe-angular",
