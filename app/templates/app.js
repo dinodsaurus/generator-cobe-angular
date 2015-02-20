@@ -1,5 +1,9 @@
 "use strict";
-angular.module("<%= appname %>", ["ui.router", "templates"])
+angular.module("<%= appname %>", [
+  "constants",
+  "ui.router",
+  "templates"
+])
 .config(function ($stateProvider, $urlRouterProvider) {
   $stateProvider
   .state("home", {

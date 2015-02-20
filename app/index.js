@@ -129,6 +129,7 @@ module.exports = yeoman.generators.Base.extend({
       }
 
       this.copy(css, 'app/styles/' + css);
+      this.copy("reset.scss", "app/styles/utils/reset.scss");
     },
 
     writeIndex: function () {
@@ -174,6 +175,7 @@ module.exports = yeoman.generators.Base.extend({
       this.copy('main.controller.js', 'app/js/main/controllers/MainController.js');
       this.copy('main.controller.spec.js', 'app/js/main/controllers/MainController.spec.js');
       this.copy('techs.directive.js', 'app/js/main/directives/TechDirective.js');
+      this.copy('config.json', 'app/config.json');
 
   },
 

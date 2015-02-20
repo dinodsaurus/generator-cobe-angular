@@ -1,0 +1,5 @@
+{
+  "development": { "greeting": "Sup!" },
+  "test": { "greeting": "Sup!" },
+  "production": { "greeting": "Hello" }
+}

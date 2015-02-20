@@ -7,7 +7,7 @@ var browserSync = require("browser-sync");
 var reload = browserSync.reload;
 
 gulp.task("styles", function () {<% if (includeSass) { %>
-  return gulp.src("app/styles/main.scss")
+  return gulp.src("app/styles/**/*.scss")
     .pipe($.sass({
       outputStyle: "nested", // libsass doesn"t support expanded yet
       precision: 10,
@@ -30,6 +30,18 @@ gulp.task("partials", function () {
   return gulp.src("app/js/**/*.html")
   .pipe($.angularTemplatecache("templates.js",{standalone:true}))
   .pipe(gulp.dest(".tmp/partials"));
+});
+
+gulp.task("constants", function () {
+  var myConfig = require("./app/config.json");
+  //export NODE_ENV=development
+  var envConfig = myConfig[process.env.NODE_ENV];
+  return $.ngConstant({
+      name: "constants",
+      constants: envConfig,
+      stream: true
+    })
+    .pipe(gulp.dest(".tmp"));
 });
 
 gulp.task("html", ["styles", "partials"], function () {
@@ -79,7 +91,7 @@ gulp.task("extras", function () {
 
 gulp.task("clean", require("del").bind(null, [".tmp", "dist"]));
 
-gulp.task("serve", <% if (includeSass) { %> ["styles", "partials", "scripts"],<% } %>function () {
+gulp.task("serve", <% if (includeSass) { %> ["styles", "constants", "partials", "scripts"],<% } %>function () {
   browserSync({
     notify: false,
     port: 9000,
@@ -123,7 +135,7 @@ gulp.task("wiredep", function () {
     .pipe(gulp.dest("app"));
 });
 
- gulp.task("build", ["validate", "html", "images", "fonts", "extras"], function () {
+ gulp.task("build", ["validate", "constants", "html", "images", "fonts", "extras"], function () {
    return gulp.src("dist/**/*").pipe($.size({title: "build", gzip: true}));
  });
 
