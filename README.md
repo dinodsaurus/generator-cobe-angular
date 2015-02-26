@@ -31,6 +31,40 @@ Keep in mind that libsass is feature-wise not fully compatible with Ruby Sass. C
 
 If your favorite feature is missing and you really need Ruby Sass, you can always switch to [gulp-ruby-sass](https://github.com/sindresorhus/gulp-ruby-sass) and update the `styles` task in `gulpfile.js` accordingly.
 
+## Project Structure
+
+    ├── app
+    │   ├── fonts
+    │   ├── img
+    │   ├── js                  - All the javascript is located here
+    │   ├── styles              - All the scss files are here
+    │   ├── config.json         - Environment variables are place here
+    │   ├── favico.ico
+    │   └── index.html          - index files with all the comments which are used by gulp
+    ├── e2e                     - Our protractor end to end tests
+    │   ├── e2e.conf.json       - Configurtion file for protractor
+    │   └── test.e2e.js         - Initial protractor test
+    └── .gitignore              - ignores npm and bower files
+    └── .jshintrc               - initial jshint settings
+    └── gulpfile.js             - all the gulp tasks are defined here
+    └── bower.json              - all the frontend dependencies
+    └── package.json            - all node dependencies
+    └── karma.conf.js           - karma config file
+
+
+An example of `app/js` folder structure
+
+    app
+    ├── main
+    │   ├── controllers
+    │   │   ├── MainController.js
+    │   │   └── MainController.spec.js
+    │   ├── directives
+    │   │   └── TechDirective.js
+    │   ├── services
+    │   └── views
+    │       └── home.html
+    └── app.js
 
 ## Getting Started
 
@@ -39,6 +73,7 @@ If your favorite feature is missing and you really need Ruby Sass, you can alway
 - Run `yo cobe-angular` to scaffold your Angular app
 - Run `gulp serve` to preview and watch for changes
 - Run `gulp validate` to run your unit tests and lint your code
+- Run `gulp constants` to make angular constants out of your `app/config.json`
 - Run `webdriver-manager start` to run your webdriver server
 - Run `gulp e2e` to run your end to end tests
 - Run `bower install --save <package>` to install frontend dependencies

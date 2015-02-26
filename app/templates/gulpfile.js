@@ -35,7 +35,8 @@ gulp.task("partials", function () {
 gulp.task("constants", function () {
   var myConfig = require("./app/config.json");
   //export NODE_ENV=development
-  var envConfig = myConfig[process.env.NODE_ENV];
+  var env = process.env.NODE_ENV || "development";
+  var envConfig = myConfig[env];
   return $.ngConstant({
       name: "constants",
       constants: envConfig,
