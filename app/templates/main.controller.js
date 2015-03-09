@@ -46,7 +46,7 @@ angular.module("<%= appname %>")
     "logo": "node-sass.png"
   }
   ];
-  angular.forEach($scope.awesomeThings, function(awesomeThing) {
+  angular.forEach($scope.awesomeThings, awesomeThing => {
     awesomeThing.rank = Math.random();
   });
 });

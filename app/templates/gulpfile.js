@@ -23,7 +23,9 @@ gulp.task("styles", function () {<% if (includeSass) { %>
 
 gulp.task("scripts", function () {
   return gulp.src("app/js/**/*.js")
-  .pipe($.size());
+  .pipe($.babel())
+  .pipe($.size())
+  .pipe(gulp.dest(".tmp/js"));
 });
 
 gulp.task("partials", function () {
@@ -160,7 +162,6 @@ gulp.task("test", ["scripts"], function () {
   });
 
   var testFiles = bowerDeps.js.concat([
-    "app/js/**/*.js",
     ".tmp/**/*.js"
     ]);
 
