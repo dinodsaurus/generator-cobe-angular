@@ -152,7 +152,7 @@ gulp.task("wiredep", function () {
         .pipe($.jshint.reporter("fail"));
 });
 
-gulp.task("test", ["scripts"], function () {
+gulp.task("test", ["scripts", "constants", "partials"], function () {
   var wiredep = require("wiredep");
   var bowerDeps = wiredep({
     directory: "bower_components",
