@@ -12,6 +12,7 @@ Build by people from [COBE](http://cobeisfresh.com/) with <3
 Please see [gulpfile.js](app/templates/gulpfile.js) for up to date information on what we support.
 
 * Write ECMA Script 6 code using [babel](https://babeljs.io/)
+* Error handling using [plumber](https://www.npmjs.com/package/gulp-plumber)
 * CSS Autoprefixing
 * Pre commit hook that validates your code
 * Built-in preview server with BrowserSync

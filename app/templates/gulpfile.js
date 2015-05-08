@@ -8,6 +8,12 @@ var reload = browserSync.reload;
 
 gulp.task("styles", function () {<% if (includeSass) { %>
   return gulp.src("app/styles/**/*.scss")
+    .pipe($.plumber({
+      handleError: function (err) {
+          console.log(err);
+          this.emit("end");
+      }
+    }))
     .pipe($.sass({
       outputStyle: "nested", // libsass doesn"t support expanded yet
       precision: 10,
@@ -23,6 +29,12 @@ gulp.task("styles", function () {<% if (includeSass) { %>
 
 gulp.task("scripts", function () {
   return gulp.src("app/js/**/*.js")
+  .pipe($.plumber({
+    handleError: function (err) {
+        console.log(err);
+        this.emit("end");
+    }
+  }))
   .pipe($.babel())
   .pipe($.size())
   .pipe(gulp.dest(".tmp/js"));

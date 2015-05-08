@@ -37,7 +37,8 @@
     "gulp-protractor": "0.0.12",
     "protractor": "^1.6.1",
     "gulp-ng-constant": "^0.3.0",
-    "gulp-babel": "^4.0.0"
+    "gulp-babel": "^4.0.0",
+    "gulp-plumber": "^1.0.0"
   },
   "scripts": {
     "validate": "gulp validate"
