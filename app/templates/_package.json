@@ -43,7 +43,7 @@
   "scripts": {
     "validate": "gulp validate"
   },
-  "precommit": [
+  "pre-commit": [
     "validate"
   ]
 }
