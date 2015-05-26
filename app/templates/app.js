@@ -9,7 +9,8 @@ angular.module("<%= appname %>", [
   .state("home", {
     url: "/",
     templateUrl: "main/views/home.html",
-    controller: "MainController"
+    controller: "MainController",
+    controllerAs: "main"
   });
 
   $urlRouterProvider.otherwise("/");
