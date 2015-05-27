@@ -1,6 +1,7 @@
 "use strict";
 class MainController{
-  constructor(){
+  constructor(UserService){
+    this.user = UserService.user;
     this.awesomeThings = [
     {
       "title": "AngularJS",
