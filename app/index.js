@@ -142,6 +142,9 @@ module.exports = yeoman.generators.Base.extend({
       this.homeScript = this.src.read('main.controller.js');
       this.homeScript = this.engine(this.homeScript, this);
 
+      this.userService = this.src.read('user.service.js');
+      this.userService = this.engine(this.userService, this);
+
       this.homeSpec = this.src.read('main.controller.spec.js');
       this.homeSpec = this.engine(this.homeSpec, this);
 
@@ -173,6 +176,7 @@ module.exports = yeoman.generators.Base.extend({
       this.copy('home.html','app/js/main/views/home.html');
       this.copy('app.js', 'app/js/app.js');
       this.copy('main.controller.js', 'app/js/main/controllers/MainController.js');
+      this.copy('user.service.js', 'app/js/main/services/UserService.js');
       this.copy('main.controller.spec.js', 'app/js/main/controllers/MainController.spec.js');
       this.copy('techs.directive.js', 'app/js/main/directives/TechDirective.js');
       this.copy('config.json', 'app/config.json');
