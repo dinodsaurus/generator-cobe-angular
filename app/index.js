@@ -1,6 +1,4 @@
 "use strict";
-var fs = require("fs");
-var path = require("path");
 var yeoman = require("yeoman-generator");
 var yosay = require("yosay");
 var chalk = require("chalk");
@@ -49,10 +47,6 @@ module.exports = yeoman.generators.Base.extend({
         name: "Bootstrap",
         value: "includeBootstrap",
         checked: true
-      }, {
-        name: "Modernizr",
-        value: "includeModernizr",
-        checked: true
       }]
     }];
 
@@ -67,8 +61,6 @@ module.exports = yeoman.generators.Base.extend({
       // we change a bit this way of doing to automatically do this in the self.prompt() method.
       this.includeSass = hasFeature("includeSass");
       this.includeBootstrap = hasFeature("includeBootstrap");
-      this.includeModernizr = hasFeature("includeModernizr");
-
       done();
     }.bind(this));
   },
