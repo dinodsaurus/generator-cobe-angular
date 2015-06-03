@@ -140,8 +140,6 @@ module.exports = yeoman.generators.Base.extend({
       this.mkdir("app/js");
       this.mkdir("app/js/main");
       this.mkdir("app/js/main/controllers");
-      this.mkdir("app/js/main/resources");
-      this.mkdir("app/js/main/resources");
       this.mkdir("app/js/main/services");
       this.mkdir("app/js/main/directives");
       this.mkdir("app/js/main/views");

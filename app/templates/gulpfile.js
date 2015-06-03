@@ -122,13 +122,14 @@ gulp.task("serve", <% if (includeSass) { %> ["styles", "constants", "partials", 
   gulp.watch([
     "app/*.html",
     ".tmp/styles/**/*.css",
-    "app/scripts/**/*.js",
+    ".tmp/scripts/**/*.js",
+    ".tmp/partials/**/*.js",
     "app/images/**/*"
   ]).on("change", reload);
 
-  gulp.watch("app/styles/**/*.<%= includeSass ? "scss" : "css" %>", ["styles", reload]);
-  gulp.watch("bower.json", ["wiredep", "fonts", reload]);
-  gulp.watch("app/js/**/*.js", ["scripts", reload]);
+  gulp.watch("app/styles/**/*.<%= includeSass ? "scss" : "css" %>", ["styles"]);
+  gulp.watch("bower.json", ["wiredep", "fonts"]);
+  gulp.watch("app/js/**/*.js", ["scripts"]);
   gulp.watch("app/js/**/*.html", ["partials", reload]);
 });
 
@@ -144,7 +145,7 @@ gulp.task("wiredep", function () {
 <% } %>
   gulp.src("app/*.html")
     .pipe(wiredep({<% if (includeSass && includeBootstrap) { %>
-      exclude: ["bootstrap-sass-official"],<% } %>
+      exclude: ["bootstrap-sass-official", "jquery"],<% } %>
       ignorePath: /^(\.\.\/)*\.\./
     }))
     .pipe(gulp.dest("app"));
