@@ -130,7 +130,7 @@ gulp.task("serve", <% if (includeSass) { %> ["styles", "constants", "partials", 
   gulp.watch("app/styles/**/*.<%= includeSass ? "scss" : "css" %>", ["styles"]);
   gulp.watch("bower.json", ["wiredep", "fonts"]);
   gulp.watch("app/js/**/*.js", ["scripts"]);
-  gulp.watch("app/js/**/*.html", ["partials", reload]);
+  gulp.watch("app/js/**/*.html", ["partials"]);
 });
 
 // inject bower components
