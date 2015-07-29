@@ -25,8 +25,8 @@
     "gulp-ng-constant": "^0.3.0",
     "gulp-plumber": "^1.0.1",
     "gulp-postcss": "5.1.8",<% if (includeSass) { %>
+    "gulp-sass": "2.0.4",<% } %>
     "gulp-protractor": "1.0.0",
-    "gulp-sass": "2.0.1",<% } %>
     "gulp-size": "1.2.1",
     "gulp-uglify": "^1.2.0",
     "gulp-useref": "^1.1.2",
@@ -38,7 +38,8 @@
     "opn": "1.0.2",
     "precommit-hook": "2.0.1",
     "protractor": "2.1.0",
-    "wiredep": "2.2.2"
+    "wiredep": "2.2.2",
+    "babel": "^5.8.19"
   },
   "scripts": {
     "validate": "gulp validate"

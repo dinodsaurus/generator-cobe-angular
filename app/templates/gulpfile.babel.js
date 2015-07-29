@@ -6,10 +6,10 @@ var $ = require("gulp-load-plugins")();
 var browserSync = require("browser-sync");
 var reload = browserSync.reload;
 
-gulp.task("styles", function () {<% if (includeSass) { %>
+gulp.task("styles",  () => {<% if (includeSass) { %>
   return gulp.src("app/styles/**/*.scss")
     .pipe($.plumber({
-      handleError: function (err) {
+      handleError: (err) => {
           console.log(err);
           this.emit("end");
       }
@@ -27,10 +27,10 @@ gulp.task("styles", function () {<% if (includeSass) { %>
     .pipe(gulp.dest(".tmp/styles"));
 });
 
-gulp.task("scripts", function () {
+gulp.task("scripts", () => {
   return gulp.src("app/js/**/*.js")
   .pipe($.plumber({
-    handleError: function (err) {
+    handleError: (err) => {
         console.log(err);
         this.emit("end");
     }
@@ -40,13 +40,13 @@ gulp.task("scripts", function () {
   .pipe(gulp.dest(".tmp/js"));
 });
 
-gulp.task("partials", function () {
+gulp.task("partials", () => {
   return gulp.src("app/js/**/*.html")
   .pipe($.angularTemplatecache("templates.js",{standalone:true}))
   .pipe(gulp.dest(".tmp/partials"));
 });
 
-gulp.task("constants", function () {
+gulp.task("constants", () => {
   var myConfig = require("./app/config.json");
   //export NODE_ENV=development
   var env = process.env.NODE_ENV || "development";
@@ -59,7 +59,7 @@ gulp.task("constants", function () {
     .pipe(gulp.dest(".tmp"));
 });
 
-gulp.task("html", ["styles", "partials"], function () {
+gulp.task("html", ["styles", "partials"], () => {
   var assets = $.useref.assets({searchPath: [".tmp", "."]});
   var jsFilter = $.filter("**/*.js");
   var cssFilter = $.filter("**/*.css");
@@ -79,7 +79,7 @@ gulp.task("html", ["styles", "partials"], function () {
     .pipe(gulp.dest("dist"));
 });
 
-gulp.task("images", function () {
+gulp.task("images", () => {
   return gulp.src("app/img/**/*")
     .pipe($.cache($.imagemin({
       progressive: true,
@@ -88,14 +88,14 @@ gulp.task("images", function () {
     .pipe(gulp.dest("dist/img"));
 });
 
-gulp.task("fonts", function () {
+gulp.task("fonts", () => {
   return gulp.src(require("main-bower-files")().concat("app/fonts/**/*"))
     .pipe($.filter("**/*.{eot,svg,ttf,woff,otf}"))
     .pipe(gulp.dest(".tmp/fonts"))
     .pipe(gulp.dest("dist/fonts"));
 });
 
-gulp.task("extras", function () {
+gulp.task("extras", () => {
   return gulp.src([
     "app/*.*",
     "!app/*.html"
@@ -106,7 +106,7 @@ gulp.task("extras", function () {
 
 gulp.task("clean", require("del").bind(null, [".tmp", "dist"]));
 
-gulp.task("serve", <% if (includeSass) { %> ["styles", "constants", "partials", "scripts"],<% } %>function () {
+gulp.task("serve", <% if (includeSass) { %> ["styles", "constants", "partials", "scripts"],<% } %> () => {
   browserSync({
     notify: false,
     port: 9000,
@@ -134,7 +134,7 @@ gulp.task("serve", <% if (includeSass) { %> ["styles", "constants", "partials", 
 });
 
 // inject bower components
-gulp.task("wiredep", function () {
+gulp.task("wiredep", () => {
   var wiredep = require("wiredep").stream;
 <% if (includeSass) { %>
   gulp.src("app/styles/*.scss")
@@ -151,21 +151,21 @@ gulp.task("wiredep", function () {
     .pipe(gulp.dest("app"));
 });
 
- gulp.task("build", ["validate", "constants", "html", "images", "fonts", "extras"], function () {
+ gulp.task("build", ["validate", "constants", "html", "images", "fonts", "extras"], () => {
    return gulp.src("dist/**/*").pipe($.size({title: "build", gzip: true}));
  });
 
- gulp.task("default", ["clean"], function () {
+ gulp.task("default", ["clean"], () => {
    gulp.start("build");
  });
- gulp.task("lint", function () {
+ gulp.task("lint", () => {
     return gulp.src("app/scripts/main.js")
         .pipe($.jshint())
         .pipe($.jshint.reporter("jshint-stylish"))
         .pipe($.jshint.reporter("fail"));
 });
 
-gulp.task("test", ["scripts", "constants", "partials"], function () {
+gulp.task("test", ["scripts", "constants", "partials"], () => {
   var wiredep = require("wiredep");
   var bowerDeps = wiredep({
     directory: "bower_components",
@@ -183,19 +183,19 @@ gulp.task("test", ["scripts", "constants", "partials"], function () {
       configFile: "karma.conf.js",
       action:  "run"
     }))
-    .on("error", function (err) {
+    .on("error", (err) => {
       // Make sure failed tests cause gulp to exit non-zero
       throw err;
     });
  });
 
-gulp.task("e2e", function () {
+gulp.task("e2e", () => {
   gulp.src(["./e2e/*.e2e.js"])
       .pipe($.protractor.protractor({
           configFile: "./e2e/e2e.conf.js",
           args: ["--baseUrl", "http://localhost:9000"]
       }))
-      .on("error", function(e) { throw e; });
+      .on("error", (e) => { throw e; });
 });
 
 gulp.task("validate", ["lint", "test"]);

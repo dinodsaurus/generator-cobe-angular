@@ -67,7 +67,7 @@ module.exports = yeoman.generators.Base.extend({
 
   writing: {
     gulpfile: function() {
-      this.template("gulpfile.js");
+      this.template("gulpfile.babel.js");
     },
 
     packageJSON: function() {
